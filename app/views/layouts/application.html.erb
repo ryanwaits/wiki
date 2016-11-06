@@ -10,6 +10,20 @@
   </head>
 
   <body>
+    <nav class="nav" style="padding: 1.5%;">
+
+      <div class="nav-left">
+        <a class="nav-item is-brand" href="#">
+          <img src="http://bulma.io/images/bulma-type.png" alt="Bulma logo">
+        </a>
+      </div>
+
+      <div class="nav-right nav-menu">
+        <%= link_to 'Home', root_path, class: 'nav-item' %>
+        <%= link_to 'New Article', new_article_path, class: 'nav-item' %>
+      </div>
+
+    </nav>
     <%= yield %>
   </body>
 </html>
