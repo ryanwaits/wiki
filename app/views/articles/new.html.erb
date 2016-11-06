@@ -1,0 +1,15 @@
+<div class="container" style="margin-top: 5%;">
+  <%= form_for :article, url: articles_path do |f| %>
+    <label class="label">Name</label>
+    <p class="control">
+      <%= f.text_field :title, class: 'input', placeholder: 'Title' %>
+    </p>
+    <label class="label">Message</label>
+    <p class="control">
+      <%= f.text_area :content, class: 'textarea', placeholder: 'Write your article' %>
+    </p>
+    <p class="control">
+      <%= f.submit 'Post article', class: 'button is-primary' %>
+    </p>
+  <% end %>
+</div>
