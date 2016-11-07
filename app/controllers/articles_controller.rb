@@ -2,7 +2,16 @@ class ArticlesController < ApplicationController
   before_action :find_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    @articles = Article.all.order('created_at DESC')
+    if params[:category].blank?
+      @articles = Article.all.order('created_at DESC')
+    else
+      category = Category.find_by(name: params[:category])
+      if category
+        @articles = Article.where(category_id: category.id)
+      else
+        @articles = Article.all.order('created_at DESC')
+      end
+    end
   end
 
   def show
