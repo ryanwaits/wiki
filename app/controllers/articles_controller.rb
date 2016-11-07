@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :find_article, only: [:show, :edit, :update, :destroy]
+  before_action :require_login, only: [:new]
 
   def index
     if params[:category].blank?
@@ -47,6 +48,13 @@ class ArticlesController < ApplicationController
   end
 
   private
+
+  def require_login
+    unless current_user
+      redirect_to root_path
+      flash.now.notice = 'You must be logged in'
+    end
+  end
 
   def find_article
     @article = Article.find(params[:id])
