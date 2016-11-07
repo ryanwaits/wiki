@@ -1,13 +1,23 @@
 <div class="container">
   <section class="hero" style="margin-top: 5%;">
     <div class="hero-body">
-      <div class="container" style="padding: 2.5%;">
+      <div class="container" style="padding: 1.5%;">
         <h1 class="title">
           <%= @article.title %>
         </h1>
         <h2 class="subtitle">
           <%= @article.content %>
         </h2>
+        <h3 class="subtitle">
+          <%= @article.created_at.strftime('%B %d, %Y') %>
+        </h3>
+        <nav class="nav">
+          <div class="nav-left">
+            <%= link_to 'Back', root_path, class: 'nav-item' %>
+            <%= link_to 'Edit', edit_article_path(@article), class: 'nav-item' %>
+            <%= link_to 'Delete', article_path(@article), method: :delete, class: 'nav-item' %>
+          </div>
+        </nav>
       </div>
     </div>
   </section>
